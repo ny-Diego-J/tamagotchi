@@ -1,0 +1,29 @@
+- thread to decrease after x time
+- reset x timer
+- stats
+- ovr score based on stats
+- tux based emotion
+- 
+
+
+Pet:
+- energy ->	    Sleeping
+- appetite ->	Eating
+- happiness ->	Play
+
+
+Gui: 
+- 3 Buttons
+    - Basic
+        - Left ->	Sleep
+        - Middle ->	Eat
+        - Right ->	Play
+    - Advanced
+        - Left -> 	Cycle through menu on screen
+        - Middle -> 	Select icon
+        - Right ->	Cancel Selection
+- Image
+    - Basic
+        - Show Pet with "Emotion" based on current stats
+    - Advanced
+	- Show Pet with Emotions and menu to select events

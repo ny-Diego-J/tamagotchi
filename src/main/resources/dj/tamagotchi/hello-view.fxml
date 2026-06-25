@@ -12,7 +12,7 @@
     </padding>
    <children>
       <ImageView id="Image" fx:id="petImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ButtonBar id="Image" prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">
+      <ButtonBar id="Image" prefHeight="40.0" prefWidth="200.0" translateX="-5.0" VBox.vgrow="NEVER">
         <buttons>
                 <Button fx:id="eatButton" mnemonicParsing="false" onAction="#onEatButtonClick" text="Eat" />
             <Button fx:id="playButton" mnemonicParsing="false" onAction="#onPlayButtonClick" text="Play" />

@@ -7,6 +7,7 @@ public class Pet {
     private int appetite;
     private int happiness;
     private static int MAX_VALUE = 100;
+    private static int CRITICAL_VALUE = 25;
 
     public Pet() {
         this.energy = MAX_VALUE;
@@ -30,12 +31,36 @@ public class Pet {
         energy = Math.max(energy - amount, 0);
     }
 
+    public void decreaseHappines(int amount) {
+        happiness = Math.max(happiness - amount, 0);
+    }
+
+    public void decreaseAppetite(int amount) {
+        appetite = Math.max(appetite - amount, 0);
+    }
+
     public void updateStatus(ImageView img) {
-        if (energy < 20) {
+        boolean isHungry = appetite <= CRITICAL_VALUE ? true : false;
+        boolean isSad = happiness <= CRITICAL_VALUE ? true : false;
+        boolean isTired = energy <= CRITICAL_VALUE ? true : false;
+        if (isHungry && isSad && isTired) {
+            img.setImage(HelloController.perrys.get(States.DEAD));
+        } else if (isHungry && isSad) {
+            // TODO: add images
+        } else if (isHungry && isTired) {
+            img.setImage(HelloController.perrys.get(States.HUNGRY_TIRED));
+        } else if (isSad && isTired) {
+            // TODO: add images
+        } else if (isHungry) {
+            img.setImage(HelloController.perrys.get(States.HUNGRY));
+        } else if (isSad) {
+            img.setImage(HelloController.perrys.get(States.SAD));
+        } else if (isTired) {
             img.setImage(HelloController.perrys.get(States.TIRED));
         } else {
             img.setImage(HelloController.perrys.get(States.HAPPY));
         }
+
     }
 
     public int getEnergy() {

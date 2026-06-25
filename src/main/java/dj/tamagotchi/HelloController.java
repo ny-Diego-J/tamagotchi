@@ -25,6 +25,8 @@ public class HelloController {
         perrys.put(States.SAD, new Image(getClass().getResourceAsStream("images/sad.png")));
         perrys.put(States.SLEEPING, new Image(getClass().getResourceAsStream("images/sleeping.png")));
         perrys.put(States.TIRED, new Image(getClass().getResourceAsStream("images/tired.png")));
+        perrys.put(States.HUNGRY_TIRED, new Image(getClass().getResourceAsStream("images/hungry_tired.png")));
+        perrys.put(States.DEAD, new Image(getClass().getResourceAsStream("images/dead.jpg")));
         petImage.setImage(perrys.get(States.HAPPY));
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), e -> updatePet()));
@@ -46,7 +48,13 @@ public class HelloController {
 
     private void updatePet() {
         pet.decreaseEnergie(5);
+        pet.decreaseAppetite(5);
+        pet.decreaseHappines(5);
         pet.updateStatus(petImage);
+        System.out.println("Energie: " + pet.getEnergy());
+        System.out.println("Appetite:" + pet.getAppetite());
+        System.out.println("Happiness: " + pet.getHappiness());
+        System.out.println("---------------------------------");
     }
 }
 

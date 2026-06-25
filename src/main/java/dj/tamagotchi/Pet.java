@@ -1,5 +1,7 @@
 package dj.tamagotchi;
 
+import javafx.scene.image.ImageView;
+
 public class Pet {
     private int energy;
     private int appetite;
@@ -21,7 +23,19 @@ public class Pet {
     }
 
     public void sleep() {
-        appetite = Math.min(appetite + 10, MAX_VALUE);
+        energy = Math.min(energy + 10, MAX_VALUE);
+    }
+
+    public void decreaseEnergie(int amount) {
+        energy = Math.max(energy - amount, 0);
+    }
+
+    public void updateStatus(ImageView img) {
+        if (energy < 20) {
+            img.setImage(HelloController.perrys.get(States.TIRED));
+        } else {
+            img.setImage(HelloController.perrys.get(States.HAPPY));
+        }
     }
 
     public int getEnergy() {

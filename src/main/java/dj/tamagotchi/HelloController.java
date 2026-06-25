@@ -10,44 +10,43 @@ import javafx.scene.image.*;
 import javafx.util.Duration;
 
 public class HelloController {
-    private HashMap<String, Image> perrys = new HashMap<>();
-    private Pet pet;
+    public static HashMap<States, Image> perrys = new HashMap<>();
+    private Pet pet = new Pet();
     @FXML
-    private ImageView petImage;
+    public ImageView petImage;
 
     @FXML
     private Button playButton;
 
     @FXML
     public void initialize() {
-        perrys.put("happy", new Image(getClass().getResourceAsStream("images/happy.png")));
-        perrys.put("hungry", new Image(getClass().getResourceAsStream("images/hungry.png")));
-        perrys.put("sad", new Image(getClass().getResourceAsStream("images/sad.png")));
-        perrys.put("sleeping", new Image(getClass().getResourceAsStream("images/sleeping.png")));
-        perrys.put("tired", new Image(getClass().getResourceAsStream("images/tired.png")));
-        petImage.setImage(perrys.get("happy"));
+        perrys.put(States.HAPPY, new Image(getClass().getResourceAsStream("images/happy.png")));
+        perrys.put(States.HUNGRY, new Image(getClass().getResourceAsStream("images/hungry.png")));
+        perrys.put(States.SAD, new Image(getClass().getResourceAsStream("images/sad.png")));
+        perrys.put(States.SLEEPING, new Image(getClass().getResourceAsStream("images/sleeping.png")));
+        perrys.put(States.TIRED, new Image(getClass().getResourceAsStream("images/tired.png")));
+        petImage.setImage(perrys.get(States.HAPPY));
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), e -> doNothing()));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), e -> updatePet()));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
 
     public void onPlayButtonClick() {
-        // TODO: initiate game
-        System.out.println("Todo");
+        pet.play();
     }
 
     public void onSleepButtonClick() {
-        // TODO: initiate sleep
-        petImage.setImage(perrys.get("sleeping"));
+        pet.sleep();
     }
 
     public void onEatButtonClick() {
-        // TODO: initiate eating
-        System.out.println("Todo");
+        pet.eat();
     }
 
-    private void doNothing() {
+    private void updatePet() {
+        pet.decreaseEnergie(5);
+        pet.updateStatus(petImage);
     }
 }
 

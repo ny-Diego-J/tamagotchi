@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dj.tamagotchi.HelloController">
    <children>
       <VBox alignment="CENTER" spacing="20.0">
@@ -19,9 +18,9 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <AnchorPane fx:id="mainPane" opacity="0.2" prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="infoText" layoutX="140.0" prefHeight="17.0" prefWidth="0.0" />
+                        <Label fx:id="infoText" layoutX="140.0" />
                         <ImageView id="Image" fx:id="petImage" fitHeight="129.0" fitWidth="172.0" layoutX="54.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
                         <ButtonBar id="Image" layoutX="1.0" layoutY="162.0" prefHeight="40.0" prefWidth="200.0">
                            <buttons>
@@ -41,6 +40,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="playPane" prefHeight="202.0" prefWidth="305.0">
                      <children>
+                        <Label fx:id="infoText" layoutX="140.0" />
                         <ImageView fx:id="chooseImage1" fitHeight="100.0" fitWidth="100.0" layoutX="-20.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="chooseImage2" fitHeight="100.0" fitWidth="100.0" layoutX="105.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="chooseImage3" fitHeight="100.0" fitWidth="100.0" layoutX="196.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />

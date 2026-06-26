@@ -88,7 +88,7 @@ public class HelloController {
         pet.eat(petImage, () -> showMessage("Perry has eaten"), playButton, eatButton, sleepButton);
     }
 
-    private void showMessage(String message) {
+    public void showMessage(String message) {
         infoText.setText(message);
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
             infoText.setText("");

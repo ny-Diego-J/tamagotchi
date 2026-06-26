@@ -127,11 +127,13 @@ public class Pet {
 
         if (won) {
             happiness = Math.min(happiness + 15, MAX_VALUE);
+            controller.showMessage("You have Won!");
         } else {
             happiness = Math.min(happiness + 2, MAX_VALUE);
+            controller.showMessage("You have Lost!");
         }
 
-        decreaseEnergie(5);
+        decreaseEnergie(10);
 
         controller.playPane.setVisible(false);
         controller.playPane.setManaged(false);

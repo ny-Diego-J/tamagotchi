@@ -21,13 +21,27 @@ public class Pet {
         this.happiness = MAX_VALUE;
     }
 
-    public void updateStatus(ImageView img) {
+    /**
+     * updates the picture of the pet. NEVER USE NULL FOR CONTROLLER EXCEPT YOU
+     * ARE SHURE ALL THE VALUES WILL BE OVER 5
+     * 
+     * @param img image to update
+     * @param controller
+     */
+    public void updateStatus(ImageView img, HelloController controller) {
         // TODO: find a way to add status effects like sleepy, overfeed etc
         boolean isHungry = appetite <= CRITICAL_VALUE ? true : false;
         boolean isSad = happiness <= CRITICAL_VALUE ? true : false;
         boolean isTired = energy <= CRITICAL_VALUE ? true : false;
         if (isHungry && isSad && isTired) {
             img.setImage(HelloController.perrys.get(States.DEAD));
+            if (appetite + happiness + energy <= 5) {
+                try {
+                    controller.showMessage("Your pet Died");
+                    controller.pauseGame();
+                } catch (NullPointerException _) {
+                }
+            }
         } else if (isHungry && isSad) {
             // TODO: add images that are matching
         } else if (isHungry && isTired) {
@@ -63,7 +77,7 @@ public class Pet {
             appetite = Math.min(appetite + amount, MAX_VALUE);
             energy = Math.min(energy + (int) (amount / 2), MAX_VALUE);
 
-            updateStatus(img);
+            updateStatus(img, null);
 
             if (onFinishedAction != null) {
                 onFinishedAction.run();
@@ -133,7 +147,7 @@ public class Pet {
 
         decreaseEnergie(10);
 
-        updateStatus(controller.petImage);
+        updateStatus(controller.petImage, controller);
 
         String text = won ? "You have Won!" : "You have Lost!";
         controller.showMessage(text, () -> {

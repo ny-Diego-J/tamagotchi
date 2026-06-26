@@ -67,7 +67,7 @@ public class HelloController {
         pet.decreaseEnergie(5);
         pet.decreaseAppetite(5);
         pet.decreaseHappines(5);
-        pet.updateStatus(petImage);
+        pet.updateStatus(petImage, this);
         System.out.println("Energie: " + pet.getEnergy());
         System.out.println("Appetite:" + pet.getAppetite());
         System.out.println("Happiness: " + pet.getHappiness());

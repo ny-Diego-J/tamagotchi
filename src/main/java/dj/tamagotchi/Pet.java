@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -33,7 +34,7 @@ public class Pet {
         boolean isSad = happiness <= CRITICAL_VALUE ? true : false;
         boolean isTired = energy <= CRITICAL_VALUE ? true : false;
         if (isHungry && isSad && isTired) {
-            img.setImage(HelloController.perrys.get(States.DEAD));
+            img.setImage(new Image(getClass().getResourceAsStream("images/dead.jpg")));
             if (appetite + happiness + energy <= 5) {
                 try {
                     controller.showMessage("Your pet Died");
@@ -94,17 +95,18 @@ public class Pet {
         controller.playPane.setVisible(true);
         controller.playPane.setManaged(true);
 
-        controller.infoText.setText("Select the right Perry");
+        controller.infoText.setText("Select the wrong Perry");
         int spot = (int) (Math.random() * 3) + 1;
         int switchUp = (int) (Math.random() * 2) + 1;
-        States fake1 = (switchUp == 1) ? States.FAKE : States.OTHER_FAKE;
-        States fake2 = (switchUp == 1) ? States.OTHER_FAKE : States.FAKE;
+        Image fake1 = new Image(getClass().getResourceAsStream("images/fake_perry.png"));
+        Image fake2 = new Image(getClass().getResourceAsStream("images/fake_perry_2.png"));
+        Image fake = switchUp == 1 ? fake1 : fake2;
 
         switch (spot) {
         case 1:
-            controller.chooseImage1.setImage(HelloController.perrys.get(States.CUBE));
-            controller.chooseImage2.setImage(HelloController.perrys.get(fake1));
-            controller.chooseImage3.setImage(HelloController.perrys.get(fake2));
+            controller.chooseImage1.setImage(fake);
+            controller.chooseImage2.setImage(HelloController.getRandomPerry());
+            controller.chooseImage3.setImage(HelloController.getRandomPerry());
 
             controller.chooseImage1.setOnMouseClicked(e -> handlePlayResult(true, controller));
             controller.chooseImage2.setOnMouseClicked(e -> handlePlayResult(false, controller));
@@ -112,9 +114,9 @@ public class Pet {
             break;
 
         case 2:
-            controller.chooseImage1.setImage(HelloController.perrys.get(fake1));
-            controller.chooseImage2.setImage(HelloController.perrys.get(States.CUBE));
-            controller.chooseImage3.setImage(HelloController.perrys.get(fake2));
+            controller.chooseImage1.setImage(HelloController.getRandomPerry());
+            controller.chooseImage2.setImage(fake);
+            controller.chooseImage3.setImage(HelloController.getRandomPerry());
 
             controller.chooseImage1.setOnMouseClicked(e -> handlePlayResult(false, controller));
             controller.chooseImage2.setOnMouseClicked(e -> handlePlayResult(true, controller));
@@ -122,9 +124,9 @@ public class Pet {
             break;
 
         case 3:
-            controller.chooseImage1.setImage(HelloController.perrys.get(fake1));
-            controller.chooseImage2.setImage(HelloController.perrys.get(fake2));
-            controller.chooseImage3.setImage(HelloController.perrys.get(States.CUBE));
+            controller.chooseImage1.setImage(HelloController.getRandomPerry());
+            controller.chooseImage2.setImage(HelloController.getRandomPerry());
+            controller.chooseImage3.setImage(fake);
 
             controller.chooseImage1.setOnMouseClicked(e -> handlePlayResult(false, controller));
             controller.chooseImage2.setOnMouseClicked(e -> handlePlayResult(false, controller));

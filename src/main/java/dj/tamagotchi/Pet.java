@@ -127,18 +127,23 @@ public class Pet {
 
         if (won) {
             happiness = Math.min(happiness + 15, MAX_VALUE);
-            controller.showMessage("You have Won!");
         } else {
             happiness = Math.min(happiness + 2, MAX_VALUE);
-            controller.showMessage("You have Lost!");
         }
 
         decreaseEnergie(10);
 
-        controller.playPane.setVisible(false);
-        controller.playPane.setManaged(false);
-        controller.mainPane.setVisible(true);
-        controller.mainPane.setManaged(true);
+        updateStatus(controller.petImage);
+
+        String text = won ? "You have Won!" : "You have Lost!";
+        controller.showMessage(text, () -> {
+            controller.playPane.setVisible(false);
+            controller.playPane.setManaged(false);
+            controller.mainPane.setVisible(true);
+            controller.mainPane.setManaged(true);
+
+            controller.continueGame();
+        });
     }
 
     public void sleep(Consumer<String> onFinishedAction, Button... buttons) {

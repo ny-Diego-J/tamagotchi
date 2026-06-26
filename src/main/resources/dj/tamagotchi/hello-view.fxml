@@ -40,7 +40,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="playPane" prefHeight="202.0" prefWidth="305.0">
                      <children>
-                        <Label fx:id="infoText" layoutX="140.0" />
+                        <Label fx:id="infoText" alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" />
                         <ImageView fx:id="chooseImage1" fitHeight="100.0" fitWidth="100.0" layoutX="-20.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="chooseImage2" fitHeight="100.0" fitWidth="100.0" layoutX="105.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="chooseImage3" fitHeight="100.0" fitWidth="100.0" layoutX="196.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />

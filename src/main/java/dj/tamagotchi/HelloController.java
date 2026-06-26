@@ -35,6 +35,8 @@ public class HelloController {
     public ImageView chooseImage2;
     @FXML
     public ImageView chooseImage3;
+    public Timeline gameLoop;
+    private Timeline messageTimeline;
 
     @FXML
     public void initialize() {
@@ -44,9 +46,21 @@ public class HelloController {
         mainPane.setManaged(true);
         loadImages();
         petImage.setImage(perrys.get(States.HAPPY));
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), e -> updatePet()));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+        gameLoop = new Timeline(new KeyFrame(Duration.seconds(5), e -> updatePet()));
+        gameLoop.setCycleCount(Timeline.INDEFINITE);
+        gameLoop.play();
+    }
+
+    public void pauseGame() {
+        if (gameLoop != null) {
+            gameLoop.pause();
+        }
+    }
+
+    public void continueGame() {
+        if (gameLoop != null) {
+            gameLoop.play();
+        }
     }
 
     private void updatePet() {
@@ -75,25 +89,43 @@ public class HelloController {
     }
 
     public void onPlayButtonClick() {
+        pauseGame();
         pet.play(this);
     }
 
     public void onSleepButtonClick() {
+        pauseGame();
         petImage.setImage(perrys.get(States.SLEEPING));
-        pet.sleep((message) -> showMessage(message), playButton, eatButton, sleepButton);
+        pet.sleep((message) -> showMessage(message, () -> {
+            this.continueGame();
+        }), playButton, eatButton, sleepButton);
     }
 
     public void onEatButtonClick() {
+        pauseGame();
         petImage.setImage(perrys.get(States.EATING));
-        pet.eat(petImage, () -> showMessage("Perry has eaten"), playButton, eatButton, sleepButton);
+        pet.eat(petImage, () -> showMessage("Perry has eaten", () -> {
+            this.continueGame();
+        }), playButton, eatButton, sleepButton);
     }
 
     public void showMessage(String message) {
+        showMessage(message, null);
+    }
+
+    public void showMessage(String message, Runnable onFinished) {
         infoText.setText(message);
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
+        if (messageTimeline != null) {
+            messageTimeline.stop();
+        }
+
+        messageTimeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
             infoText.setText("");
+            if (onFinished != null) {
+                onFinished.run();
+            }
         }));
-        timeline.setCycleCount(1);
-        timeline.play();
+        messageTimeline.setCycleCount(1);
+        messageTimeline.play();
     }
 }

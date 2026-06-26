@@ -80,12 +80,14 @@ public class HelloController {
         perrys.put(States.SAD, new Image(getClass().getResourceAsStream("images/sad.png")));
         perrys.put(States.SLEEPING, new Image(getClass().getResourceAsStream("images/sleeping.png")));
         perrys.put(States.TIRED, new Image(getClass().getResourceAsStream("images/tired.png")));
-        perrys.put(States.HUNGRY_TIRED, new Image(getClass().getResourceAsStream("images/hungry_tired.png")));
+        perrys.put(States.HUNGRY_TIRED, new Image(getClass().getResourceAsStream("images/hungry_tired.jpeg")));
         perrys.put(States.DEAD, new Image(getClass().getResourceAsStream("images/dead.jpg")));
         perrys.put(States.EATING, new Image(getClass().getResourceAsStream("images/eating.png")));
         perrys.put(States.FAKE, new Image(getClass().getResourceAsStream("images/fake_perry.png")));
         perrys.put(States.OTHER_FAKE, new Image(getClass().getResourceAsStream("images/fake_perry_2.png")));
         perrys.put(States.CUBE, new Image(getClass().getResourceAsStream("images/cube.png")));
+        perrys.put(States.SAD_HUNGRY, new Image(getClass().getResourceAsStream("images/sad_hungry.jpeg")));
+        perrys.put(States.SAD_TIRED, new Image(getClass().getResourceAsStream("images/sad_tired.jpeg")));
     }
 
     public void onPlayButtonClick() {

@@ -43,11 +43,11 @@ public class Pet {
                 }
             }
         } else if (isHungry && isSad) {
-            // TODO: add images that are matching
+            img.setImage(HelloController.perrys.get(States.SAD_HUNGRY));
         } else if (isHungry && isTired) {
             img.setImage(HelloController.perrys.get(States.HUNGRY_TIRED));
         } else if (isSad && isTired) {
-            // TODO: add images
+            img.setImage(HelloController.perrys.get(States.SAD_TIRED));
         } else if (isHungry) {
             img.setImage(HelloController.perrys.get(States.HUNGRY));
         } else if (isSad) {

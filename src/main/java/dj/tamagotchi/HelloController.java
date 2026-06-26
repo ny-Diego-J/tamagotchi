@@ -46,7 +46,7 @@ public class HelloController {
         mainPane.setManaged(true);
         loadImages();
         petImage.setImage(perrys.get(States.HAPPY));
-        gameLoop = new Timeline(new KeyFrame(Duration.seconds(5), e -> updatePet()));
+        gameLoop = new Timeline(new KeyFrame(Duration.seconds(3), e -> updatePet()));
         gameLoop.setCycleCount(Timeline.INDEFINITE);
         gameLoop.play();
     }
@@ -64,9 +64,9 @@ public class HelloController {
     }
 
     private void updatePet() {
-        pet.decreaseEnergie(5);
-        pet.decreaseAppetite(5);
-        pet.decreaseHappines(5);
+        pet.decreaseEnergie((int) (Math.random() * 5) + 1);
+        pet.decreaseAppetite((int) (Math.random() * 5) + 1);
+        pet.decreaseHappines((int) (Math.random() * 3) + 1);
         pet.updateStatus(petImage, this);
         System.out.println("Energie: " + pet.getEnergy());
         System.out.println("Appetite:" + pet.getAppetite());

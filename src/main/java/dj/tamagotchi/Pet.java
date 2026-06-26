@@ -29,7 +29,6 @@ public class Pet {
      * @param controller
      */
     public void updateStatus(ImageView img, HelloController controller) {
-        // TODO: find a way to add status effects like sleepy, overfeed etc
         boolean isHungry = appetite <= CRITICAL_VALUE ? true : false;
         boolean isSad = happiness <= CRITICAL_VALUE ? true : false;
         boolean isTired = energy <= CRITICAL_VALUE ? true : false;
@@ -70,7 +69,7 @@ public class Pet {
         for (Button button : buttons) {
             button.setDisable(true);
         }
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(amount), event -> {
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(amount / 2), event -> {
             for (Button button : buttons) {
                 button.setDisable(false);
             }
@@ -165,7 +164,7 @@ public class Pet {
         for (Button button : buttons) {
             button.setDisable(true);
         }
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(amount), event -> {
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(amount / 2), event -> {
             for (Button button : buttons) {
                 button.setDisable(false);
             }
